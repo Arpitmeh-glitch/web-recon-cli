@@ -139,19 +139,24 @@ def web_recon():
         except ValueError:#*!Prevented ValueError*!#
             print("Please enter a valid number.")
 def subdomain_finder():
-    count=0
-    domain=input("Enter a domain name(example:google.com): ")
-    sub_domains=["www","blog","mail","shop","dev",'api','stage','staging','test','demo','support','help',
-                'app','portal','admin','cdn','secure','docs','images','webmail']
+    count = 0
+    domain = input("Enter a domain name (example: google.com): ")
+    try:
+        with open("subdomains_small.txt", "r") as f:
+            sub_domains = f.read().splitlines()
+    except FileNotFoundError:
+        print("subdomains.txt file not found.")
+        return
+    print("\nScanning for subdomains...\n")
     for sub in sub_domains:
         fulldom = sub + "." + domain
         try:
             ip = socket.gethostbyname(fulldom)
-            print("the ip of",fulldom,"is",ip)
-            count+=1
+            print("[FOUND]",fulldom," ->" ,ip)
+            count += 1
         except socket.gaierror:
             pass
-    print("there are",count,"subdomains of this domain")
+    print("\nTotal subdomains found: ", {count})
 while True:
     try:
         print("1.Web-recon-Tool")
