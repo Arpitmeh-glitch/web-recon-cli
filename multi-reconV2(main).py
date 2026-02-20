@@ -169,8 +169,9 @@ def subdomain_finder():
                     print("subdomains_large.txt file not found.")
                     return 
             case _:
-                print("Enter a valid value")    
-    except:
+                print("Enter a valid value")  
+                return  
+    except ValueError:
         print("Error")
     print("\nScanning for subdomains...\n")
     for sub in sub_domains:
@@ -181,7 +182,7 @@ def subdomain_finder():
             count += 1
         except socket.gaierror:
             pass
-    print("\nTotal subdomains found: ", {count})
+    print("\nTotal subdomains found: ", count)
 while True:
     try:
         print("1.Web-recon-Tool")
@@ -197,5 +198,6 @@ while True:
                 break
             case _:
                 print("Invalid Choice")
+                break
     except:
         print("Invalid choice")
