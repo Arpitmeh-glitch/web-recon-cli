@@ -1,6 +1,6 @@
 import requests
 import socket
-def program1():
+def web_recon():
     def check_security_headers(response):
         security_headers = [
             "X-Frame-Options",
@@ -138,7 +138,7 @@ def program1():
 
         except ValueError:#*!Prevented ValueError*!#
             print("Please enter a valid number.")
-def program2():
+def subdomain_finder():
     count=0
     domain=input("Enter a domain name(example:google.com): ")
     sub_domains=["www","blog","mail","shop","dev",'api','stage','staging','test','demo','support','help',
@@ -160,9 +160,9 @@ while True:
         choi=int(input("Input the choice: "))
         match choi:
             case 1:
-                program1()
+                web_recon()
             case 2:
-                program2()
+                subdomain_finder()
             case 3:
                 break
             case _:
