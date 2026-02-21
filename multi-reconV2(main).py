@@ -1,5 +1,6 @@
 import requests
 import socket
+socket.setdefaulttimeout(1)
 def web_recon():
     def check_security_headers(response):
         security_headers = [
